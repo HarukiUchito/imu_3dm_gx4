@@ -68,17 +68,17 @@ void publishData(const Imu::IMUData& data) {
       -1;  //  orientation data is on a separate topic
 
   imu.linear_acceleration.x = data.accel[0] * gravity;
-  imu.linear_acceleration.y = data.accel[1] * gravity;
+  imu.linear_acceleration.y = -data.accel[1] * gravity;
   imu.linear_acceleration.z = data.accel[2] * gravity;
   imu.angular_velocity.x = data.gyro[0];
-  imu.angular_velocity.y = data.gyro[1];
+  imu.angular_velocity.y = -data.gyro[1];
   imu.angular_velocity.z = data.gyro[2];
 
   pressure.fluid_pressure = data.pressure;
 
   if (enableMagnetometer) {
     field.magnetic_field.x = data.mag[0];
-    field.magnetic_field.y = data.mag[1];
+    field.magnetic_field.y = -data.mag[1];
     field.magnetic_field.z = data.mag[2];
   }
 
